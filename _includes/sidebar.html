@@ -25,6 +25,19 @@
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>  
         </a>  
       </li>  
+      <li class="nav-item{% if page.url == '/firstyear/' %} active{% endif %}">
+  <a href="https://ohmlaws.github.io/firstyear/" class="nav-link">
+    <i class="fa-fw fas fa-book-open"></i>
+    <span>FIRST YEAR</span>
+  </a>
+</li>
+
+<li class="nav-item{% if page.url == '/secondyear/' %} active{% endif %}">
+  <a href="https://ohmlaws.github.io/secondyear/" class="nav-link">
+    <i class="fa-fw fas fa-book-open"></i>
+    <span>SECOND YEAR</span>
+  </a>
+</li>
       <!-- the real tabs -->  
       {% for tab in site.tabs %}  
         <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">  
