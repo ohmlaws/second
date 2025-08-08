@@ -1,6 +1,4 @@
 ---
-layout: 1st Year
-icon: fa-solid fa-book-open
+title: First Year
 order: 1
-permalink: https://ohmlaws.github.io/firstyear/
 ---
