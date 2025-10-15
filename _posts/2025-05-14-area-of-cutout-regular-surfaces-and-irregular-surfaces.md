@@ -5,6 +5,7 @@ description: >-
 date: 2025-05-14 01:25:32 +0530
 categories: [2nd year, WCS]
 tags: [WCS, ITI]
+math: true
 author: Roni
 image:
   path: /assets/img/banner/wcs/wcs-m3.webp
