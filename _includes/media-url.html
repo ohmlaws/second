@@ -19,19 +19,29 @@
       {% assign url = include.subpath | append: '/' | append: url %}
     {% endif %}
 
-    {%- comment -%} Prepend CND URL {%- endcomment -%}
+    {%- comment -%} Prepend CDN URL if defined {%- endcomment -%}
     {% if site.cdn %}
       {% assign url = site.cdn | append: '/' | append: url %}
     {% endif %}
 
+    {%- comment -%}
+      Normalize the URL to ensure consistent slashes
+    {%- endcomment -%}
     {% assign url = url | replace: '///', '/' | replace: '//', '/' | replace: ':/', '://' %}
 
     {% unless url contains '://' %}
+      {%- comment -%}
+        Safely combine baseurl and path.
+        Ensures no double `/` or missing `/`
+      {%- endcomment -%}
       {% if include.absolute %}
-        {% assign url = site.url | append: site.baseurl | append: url %}
+        {% assign url = site.url | append: site.baseurl | append: '/' | append: url %}
       {% else %}
-        {% assign url = site.baseurl | append: url %}
+        {% assign url = site.baseurl | append: '/' | append: url %}
       {% endif %}
+
+      {%- comment -%} Remove accidental double slashes but keep https:// {%- endcomment -%}
+      {% assign url = url | replace: '//', '/' | replace: ':/', '://' %}
     {% endunless %}
   {% endunless %}
 {%- endif -%}
